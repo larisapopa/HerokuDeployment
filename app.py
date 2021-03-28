@@ -22,7 +22,7 @@ def predict():
 
     return render_template('index.html', prediction_text='Prediction: {}'.format(prediction))
 
-@app.route('/predictArrest/<int:crime_type>', methods=['POST'])
+@app.route('/predict/arrest/<int:crime_type>', methods=['POST'])
 def predictArrest(crime_type):
     final = np.array(crime_type).reshape(-1, 1)
     prediction = model.predict(final)[0]
