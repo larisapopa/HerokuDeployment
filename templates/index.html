@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chicago Crimes</title>
+</head>
+<body>
+    <h1>Here are the encoding that you should use:</h1>
+    <img src="{{url_for('static', filename='labels.png')}}" align="middle"  alt="Encodings" width="300" height="400" >
+
+<div class = "predict">
+    <h1> Predict arrest True or False according to the crime type </h1>
+
+    <form action="{{ url_for('predict')}}" method="post">
+        <input type="text" name="crimeType" placeholder="CrimeTye" required="required"/>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large"> Predict </button>
+    </form>
+
+    <br>
+    <br>
+    {{ prediction_text}}
+
+</div>
+</body>
+</html>
