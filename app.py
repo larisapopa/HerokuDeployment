@@ -21,6 +21,17 @@ def predict():
         prediction = "Yes, it will lead to arrest"
 
     return render_template('index.html', prediction_text='Prediction: {}'.format(prediction))
+
+@app.route('/predictArrest/<int:crime_type>', methods=['POST'])
+def predictArrest(crime_type):
+    final = np.array(crime_type).reshape(-1, 1)
+    prediction = model.predict(final)[0]
+    if prediction == 0:
+        prediction = 'No arrest'
+    else:
+        prediction = "Yes, it will lead to arrest"
+    return prediction
+
 if  __name__== '__main__':
     app.run(port=8081, debug=True)
 
